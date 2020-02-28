@@ -18,19 +18,19 @@ namespace AzSearchDemo {
             string indexName = configuration["SearchIndexName"];
 
             Console.WriteLine ("{0}", "Deleting index...\n");
-            DeleteIndexIfExists (indexName, serviceClient);
+            //DeleteIndexIfExists (indexName, serviceClient);
 
             Console.WriteLine ("{0}", "Creating index...\n");
-            CreateIndex (indexName, serviceClient);
+           // CreateIndex (indexName, serviceClient);
 
             // Uncomment next 3 lines in "2 - Load documents"
-            // ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
-            // Console.WriteLine("{0}", "Uploading documents...\n");
-            // UploadDocuments(indexClient);
+             ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
+             Console.WriteLine("{0}", "Uploading documents...\n");
+             //UploadDocuments(indexClient);
 
             // Uncomment next 2 lines in "3 - Search an index"
-            // Console.WriteLine("{0}", "Searching index...\n");
-            // RunQueries(indexClient);
+             Console.WriteLine("{0}", "Searching index...\n");
+            RunQueries(indexClient);
 
             Console.WriteLine ("{0}", "Complete.  Press any key to end application...\n");
             Console.ReadKey ();
