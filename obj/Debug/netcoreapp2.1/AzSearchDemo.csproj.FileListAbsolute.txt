@@ -1,0 +1,11 @@
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\obj\Debug\netcoreapp2.1\AzSearchDemo.csprojAssemblyReference.cache
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\obj\Debug\netcoreapp2.1\AzSearchDemo.csproj.CoreCompileInputs.cache
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\obj\Debug\netcoreapp2.1\AzSearchDemo.AssemblyInfoInputs.cache
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\obj\Debug\netcoreapp2.1\AzSearchDemo.AssemblyInfo.cs
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\bin\Debug\netcoreapp2.1\AzSearchDemo.deps.json
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\bin\Debug\netcoreapp2.1\AzSearchDemo.runtimeconfig.json
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\bin\Debug\netcoreapp2.1\AzSearchDemo.runtimeconfig.dev.json
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\bin\Debug\netcoreapp2.1\AzSearchDemo.dll
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\bin\Debug\netcoreapp2.1\AzSearchDemo.pdb
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\obj\Debug\netcoreapp2.1\AzSearchDemo.dll
+C:\Users\Pushkar\Documents\gk\AzSearchDemo\obj\Debug\netcoreapp2.1\AzSearchDemo.pdb
