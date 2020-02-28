@@ -11,29 +11,33 @@ namespace AzSearchDemoMDS
 {
     public sealed class Program
     {
-        // This sample shows how to create a search index, and how to index and merge data
-        // from two different data sources.
 
-        static IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
-        static IConfigurationRoot configuration = builder.Build();
-
-        static async Task Main(string[] args)
+        IConfigurationBuilder builder ;
+        IConfigurationRoot configuration ;
+        public Program(){
+            builder=new ConfigurationBuilder().AddJsonFile("appsettings.json");
+          configuration = builder.Build();
+        }
+        public  async Task Main()
         {
+            
+         
+
             // First, connect to a search service
             SearchServiceClient searchService = CreateSearchServiceClient(configuration);
 
-            string indexName = "hotel-rooms-sample";
+            string indexName = "room-index";
 
             // Next, create the search index
-            Console.WriteLine("Deleting index...\n");
-            await DeleteIndexIfExists(indexName, searchService);
+            //Console.WriteLine("Deleting index...\n");
+            //await DeleteIndexIfExists(indexName, searchService);
 
-            Console.WriteLine("Creating index...\n");
+           // Console.WriteLine("Creating index...\n");
             await CreateIndex(indexName, searchService);
 
             // Set up a CosmosDB data source and indexer, and run the indexer to import hotel data
-            Console.WriteLine("Indexing Cosmos DB hotel data...\n");
-            await CreateAndRunCosmosDbIndexer(indexName, searchService);
+            //Console.WriteLine("Indexing Cosmos DB hotel data...\n");
+           // await CreateAndRunCosmosDbIndexer(indexName, searchService);
 
             // Set up a Blob Storage data source and indexer, and run the indexer to merge hotel room data
             Console.WriteLine("Indexing and merging hotel room data from blob storage...\n");
@@ -43,7 +47,7 @@ namespace AzSearchDemoMDS
             Console.ReadKey();
         }
 
-        private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
+        private  SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
         {
             string searchServiceName = configuration["SearchServiceName"];
             string adminApiKey = configuration["SearchServiceAdminApiKey"];
@@ -52,7 +56,7 @@ namespace AzSearchDemoMDS
             return searchService;
         }
 
-        private static async Task DeleteIndexIfExists(string indexName, SearchServiceClient searchService)
+        private  async Task DeleteIndexIfExists(string indexName, SearchServiceClient searchService)
         {
             if (searchService.Indexes.Exists(indexName))
             {
@@ -60,7 +64,7 @@ namespace AzSearchDemoMDS
             }
         }
 
-        private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
+        private  async Task CreateIndex(string indexName, SearchServiceClient searchService)
         {
             // Create a new search index structure that matches the properties of the Hotel class.
             // The Address and Room classes are referenced from the Hotel class. The FieldBuilder
@@ -73,7 +77,7 @@ namespace AzSearchDemoMDS
             await searchService.Indexes.CreateAsync(definition);
         }
 
-        private static async Task CreateAndRunCosmosDbIndexer(string indexName, SearchServiceClient searchService)
+        private  async Task CreateAndRunCosmosDbIndexer(string indexName, SearchServiceClient searchService)
         {
             // Append the database name to the connection string
             string cosmosConnectString = 
@@ -122,7 +126,7 @@ namespace AzSearchDemoMDS
             }
         }
 
-        private static async Task CreateAndRunBlobIndexer(string indexName, SearchServiceClient searchService)
+        private  async Task CreateAndRunBlobIndexer(string indexName, SearchServiceClient searchService)
         {
             DataSource blobDataSource = DataSource.AzureBlobStorage(
                 name: configuration["BlobStorageAccountName"],
@@ -133,6 +137,8 @@ namespace AzSearchDemoMDS
             // but the connection string might need to be updated if it has changed.
             await searchService.DataSources.CreateOrUpdateAsync(blobDataSource);
 
+            System.Console.WriteLine("Data Source Registered with Search");
+            Console.ReadLine();
             Console.WriteLine("Creating Blob Storage indexer...\n");
 
             // Add a field mapping to match the Id field in the documents to 

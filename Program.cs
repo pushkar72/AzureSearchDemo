@@ -4,14 +4,25 @@ using System.Threading;
 using Microsoft.Azure.Search;
 using Microsoft.Azure.Search.Models;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 namespace AzSearchDemo {
 
     class Program {
         // Demonstrates index delete, create, load, and query
         // Commented-out code is uncommented in later steps
         static void Main (string[] args) {
+            
+            
+            Task p=new AzSearchDemoMDS.Program().Main();
+            p.Wait();
+        
+            
+            Console.ReadLine();
             IConfigurationBuilder builder = new ConfigurationBuilder ().AddJsonFile ("appsettings.json");
             IConfigurationRoot configuration = builder.Build ();
+
+
+
 
             SearchServiceClient serviceClient = CreateSearchServiceClient (configuration);
 
